@@ -325,10 +325,31 @@ namespace Rx
 			
 			boundaries.Clear();
 			holes.Clear();
-			
-			for ( int index = 0; index < clipResults.Count; ++index )
+
+			// TODO: at the very least, put this in a function
+			// Figure out which results are boundaries and which are holes.
+			for ( int indexA = 0; indexA < clipResults.Count; ++indexA )
 			{
-				boundaries.Add( new PolygonProcessingInfo( clipResults[index] ) );
+				bool isContained = false;
+				
+				for ( int indexB = 0; indexB < clipResults.Count; ++indexB )
+				{
+					if ( ( indexA != indexB ) && Geometry2.PolygonContainsPolygon( clipResults[indexB], clipResults[indexA] ) )
+					{
+						isContained = true;
+						break;
+					}
+				}
+
+				// TODO: This is buggy. It will turn orphaned holes into boundaries. Stop storing polygons as lists of vertices and start passing them around with data.
+				if ( isContained )
+				{
+					holes.Add( new PolygonProcessingInfo( clipResults[indexA] ) );
+				}
+				else
+				{
+					boundaries.Add( new PolygonProcessingInfo( clipResults[indexA] ) );
+				}
 			}
 		}
 		

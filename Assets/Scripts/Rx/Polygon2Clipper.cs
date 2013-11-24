@@ -129,7 +129,8 @@ namespace Rx
 			
 			return result;
 		}
-		
+
+		// TODO: return additive and subtractive as separate lists, or just force caller to redetermine holes?
 		public List< List<Vector2> > ClipPolygons()
 		{
 			ForceWinding();
@@ -149,6 +150,14 @@ namespace Rx
 			
 			// Add polygons that aren't intersecting with anything.
 			foreach ( PolygonProcessingInfo polygonInfo in additivePolygonInfos )
+			{
+				if ( !polygonInfo.isIntersecting )
+				{
+					result.Add( polygonInfo.vertices );
+				}
+			}
+
+			foreach ( PolygonProcessingInfo polygonInfo in subtractivePolygonInfos )
 			{
 				if ( !polygonInfo.isIntersecting )
 				{
