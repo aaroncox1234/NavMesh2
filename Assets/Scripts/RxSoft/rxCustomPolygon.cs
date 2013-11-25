@@ -15,13 +15,7 @@ namespace RxSoft
 
 		public virtual void OnDrawGizmos()
 		{
-			// HACK
-			if ( localVertices.Count == 0 )
-			{
-				localVertices.Add( new Vector2( 300.0f, 0.0f ) );
-				localVertices.Add( new Vector2( 0.0f, -500.0f ) );
-				localVertices.Add( new Vector2( -400.0f, 0.0f ) );
-			}
+			InitializeIfEmpty();
 			
 			DrawEdges( false );
 			DrawVertices( false );
@@ -29,13 +23,7 @@ namespace RxSoft
 
 		public virtual void OnDrawGizmosSelected()
 		{
-			// HACK
-			if ( localVertices.Count == 0 )
-			{
-				localVertices.Add( new Vector2( 300.0f, 0.0f ) );
-				localVertices.Add( new Vector2( 0.0f, -500.0f ) );
-				localVertices.Add( new Vector2( -400.0f, 0.0f ) );
-			}
+			InitializeIfEmpty();
 
 			DrawEdges( true);
 			DrawVertices( true );
@@ -263,6 +251,16 @@ namespace RxSoft
 			}	
 		}
 
+		private void InitializeIfEmpty()
+		{
+			if ( localVertices.Count == 0 )
+			{
+				localVertices.Add( new Vector2( -100.0f, 100.0f ) );
+				localVertices.Add( new Vector2( -100.0f, -100.0f ) );
+				localVertices.Add( new Vector2( 100.0f, -100.0f ) );
+			}
+		}
+		
 		#endregion
 	}
 }

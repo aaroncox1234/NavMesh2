@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RxSoft
 {
-	public class Geometry2D
+	public class rxGeometry
 	{
 		// Returns twice the area of the triangle defined by the three points.
 		// If the result is positive, the triangle is CCW.

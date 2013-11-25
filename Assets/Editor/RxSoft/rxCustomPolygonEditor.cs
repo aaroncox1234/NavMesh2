@@ -67,8 +67,8 @@ namespace RxSoft
 			bool reverseWinding = GUILayout.Button( "Reverse Winding" );
 			bool centerGizmo = GUILayout.Button( "Center Gizmo" );
 
-			GUILayout.Label( "Type: " + ( Geometry2D.IsPolygonConvex( targetVertices ) ? "Convex" : "Concave" ) );
-			GUILayout.Label( "Winding: " + ( Geometry2D.IsPolygonCCW( targetVertices ) ? "CCW" : "CW" ) );
+			GUILayout.Label( "Type: " + ( rxGeometry.IsPolygonConvex( targetVertices ) ? "Convex" : "Concave" ) );
+			GUILayout.Label( "Winding: " + ( rxGeometry.IsPolygonCCW( targetVertices ) ? "CCW" : "CW" ) );
 			
 			GUILayout.EndVertical();
 

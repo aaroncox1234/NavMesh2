@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace RxSoft
 {
-	public class PolygonInfo
+	public class rxProcessingPolygon
 	{
 		public List<Vector2> vertices;
 		
-		public PolygonInfo()
+		public rxProcessingPolygon( List<Vector2> vertices )
 		{
-			this.vertices = new List<Vector2>();
+			this.vertices = vertices;
 		}
 	}
 }
